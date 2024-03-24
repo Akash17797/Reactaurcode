@@ -14,36 +14,43 @@ function App() {
     >
       <div className="fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-3">
         <div className="flex flex-wrap justify-center gap-3 font-bold shadow-lg bg-white px-3 py-2 rounded-3xl">
+
           <button
-          onClick={() => setColor("red")} //setColor is the conditions in which we enter the value that we want
+          onClick={() => setColor("Red")} //setColor is the conditions in which we enter the value that we want
           className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
-          style={{backgroundColor: "red"}}
+          style={{backgroundColor: "Red"}}
           >Red</button>
+
           <button
           onClick={() => setColor("green")} //setColor is the conditions in which we enter the value that we want
           className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
           style={{backgroundColor: "green"}}
           >Green</button>
+
           <button
           onClick={() => setColor("blue")} //setColor is the conditions in which we enter the value that we want
           className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
           style={{backgroundColor: "blue"}}
           >Blue</button>
+
           <button
           onClick={() => setColor("Purple")} //setColor is the conditions in which we enter the value that we want
           className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
           style={{backgroundColor: "Purple"}}
           >Purple</button>
+
           <button
           onClick={() => setColor("Lavender")} //setColor is the conditions in which we enter the value that we want
           className="outline-none px-4 py-1 rounded-full text-black shadow-lg"
           style={{backgroundColor: "Lavender"}}
           >Lavender</button>
+
           <button
           onClick={() => setColor("Grey")} //setColor is the conditions in which we enter the value that we want
           className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
           style={{backgroundColor: "Grey"}}
           >Grey</button>
+
         </div>
       </div>
     </div>
