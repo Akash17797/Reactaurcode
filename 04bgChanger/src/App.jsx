@@ -18,7 +18,9 @@ function App() {
         <div className="flex flex-wrap justify-center gap-3 font-bold shadow-lg bg-white px-3 py-2 rounded-3xl">
 
           <button
-          onClick={() => setColor("Red")} //setColor is the conditions in which we enter the value that we want
+          onClick={() => setColor("Red")} 
+          // ab yha pe ques aa skta ki onclick hi tha toh direct setcolo kyunhi paas kiya. toh uska answer hai ki onclick ek callback function mangta hai. agar koi function bhi paas karte hai jaise setcolor toh usme hum values nhi paas kar paenge and agar setcolor() use kiya value paas karne ke liye toh function run hi ho jaega. isiliye ek function bnaya taaki usme setcolor ko run karke values paas kar ske.
+
           className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
           style={{backgroundColor: "Red"}}
           >Red</button>
