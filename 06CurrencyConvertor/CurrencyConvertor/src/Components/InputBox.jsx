@@ -1,6 +1,6 @@
 import React, {useId} from 'react'
 
-function InputBox({
+function InputBox({             //toh paranthesis () mei jab hum {} braces use karte hai toh usme hai kai saari values paas kar skte hai and kai saari values ko default bhi set kar skte hai.
     label,
     amount,
     onAmountChange,
@@ -11,10 +11,9 @@ function InputBox({
     // the below ones are optional
     amountDisable = false,
     currencyDisable = false,
-    className = "",
-}) {
+    className = ""  })
 
-   const amountInputId = useId()  // do not call useId to generate keys in the list. keys should be generated from your data
+    {const amountInputId = useId()  // The useId hook generates a unique ID that can be used for labeling elements in your React component, which is particularly useful for accessibility purposes, do not call useId to generate keys in the list. keys should be generated from your data
 
     return (
         <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
@@ -25,7 +24,7 @@ function InputBox({
                     {label}
                 </label>
                 <input
-                    id={amountInputId}
+                    id={amountInputId} //for giving unique id
                     className="outline-none w-full bg-transparent py-1.5 "
                     type="number"
                     placeholder="Amount"
