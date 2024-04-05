@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-export const ThemeContext = createContext({  //pichli baar hmne createcontext mei koi value nhi di thi n usko empty rkha tha... par hum isme koi value de skte hai taaki agar koi context ko call kare toh starting mei hi ye saari values honi chahiye. Isme hum vairables and methods dono hi input kar skte hai
+export const ThemeContext = createContext({  //pichli baar hmne createcontext mei koi value nhi di thi n usko empty rkha tha... par hum isme koi value de skte hai taaki agar koi context ko call kare toh starting mei hi ye saari values honi chahiye. Isme hum variables and methods dono hi input kar skte hai
     themeMode: "light",   
     darkTheme: () => {},
     lightTheme: () => {},
@@ -9,7 +9,7 @@ export const ThemeContext = createContext({  //pichli baar hmne createcontext me
 
 // Hum Theme context or theme context provdider ek saath hi export kar skte hai ek hi file mei..
 
-export const ThemeProvider = ThemeContext.Provider
+export const ThemeProvider = ThemeContext.Provider   // Theme Provider is used to wrap the HTML.
 
 // Custom Hooks can also be exported from here which people generally do
 

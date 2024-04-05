@@ -18,6 +18,8 @@ function App() {
 
   useEffect (() => {
     let classList = document.querySelector('html').classList
+
+    console.log(classList);
     
     classList.remove("light", "dark")   //to remove if there is any default value
 
@@ -25,7 +27,7 @@ function App() {
   }, [themeMode])
 
   return (
-    <ThemeProvider value={{themeMode, darkTheme, lightTheme}}>
+    <ThemeProvider value={{themeMode, darkTheme, lightTheme}}>  {/*ThemeProvider is the wrapper to wrap the HTML content to show on page */}
     <div className="flex flex-wrap min-h-screen items-center">
                 <div className="w-full">
                     <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
