@@ -50,7 +50,13 @@ export const todoSlice = createSlice({
 
         // hum functions bahar bna ke yha pe uska reference bhi de skte hai... reference dena hai call nhi karna
 
-        // Assignment: Update Todo ka hmne bnana
+        // updateTodo: (state, action) => {
+        //     const { id, newText } = action.payload;
+        //     const todoToUpdate = state.todos.find(todo => todo.id === id);
+        //     if (todoToUpdate) {
+        //         todoToUpdate.text = newText;
+        //     }
+        // }
     }
     
 })
@@ -58,7 +64,7 @@ export const todoSlice = createSlice({
 // to export we follow the below syntax:
 
 // First we export the individual fucntionalities that we have created so that we can use them later
-export const {addTodo, removeTodo} = todoSlice.actions
+export const {addTodo, removeTodo, updateTodo} = todoSlice.actions
 //  export const { addTodo, removeTodo } = todoSlice.actions is exporting the addTodo and removeTodo action creators from the actions object of the todoSlice. This allows other modules to import and use these action creators to dispatch actions.
 
 export default todoSlice.reducer
