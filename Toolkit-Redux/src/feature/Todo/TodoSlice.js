@@ -43,21 +43,30 @@ export const todoSlice = createSlice({
         //     state.todos = state.todos.filter(todo => todo.id !== todoIdToRemove);
         // }   same code for the below code... for better  understanding
         
-        removeTodo: (state, action) => {
-            state.todos = state.todos.filter((todo) => todo.id !== action.payload)
+        removeTodo: (state, action) => {   
+            state.todos = state.todos.filter((todo) => todo.id !== action.payload)  //state is the intial state
         },
         // ContextAPI mei jaise hum fucntions ki defination likhte the and declare app.jsx mei jaake karte the... par redux mei yhi hi defination and yhi hi declaration bhi karte hai
 
         // hum functions bahar bna ke yha pe uska reference bhi de skte hai... reference dena hai call nhi karna
-
-        // updateTodo: (state, action) => {
-        //     const { id, newText } = action.payload;
-        //     const todoToUpdate = state.todos.find(todo => todo.id === id);
-        //     if (todoToUpdate) {
-        //         todoToUpdate.text = newText;
-        //     }
-        // }
+        
+        updateTodo: (state, action) => {
+            const { id, newText } = action.payload;
+            state.todos = state.todos.map(todo =>
+                todo.id === id ? { ...todo, text: newText } : todo
+            );
+        }
     }
+    
+    // another way 
+    // updateTodo: (state, action) => {
+    //     const { id, newText } = action.payload;
+    //     const todoToUpdate = state.todos.find(todo => todo.id === id);
+    //     if (todoToUpdate) {
+    //         todoToUpdate.text = newText;
+    //     }
+    // }
+    
     
 })
 

@@ -7,43 +7,43 @@ import TodoItem from './components/TodoItem'
 
 function App() {
 
-  const [todos, setTodos] = useState ([]);
+  const [newTodos, setNewTodos] = useState ([]); // newTodos varaible aaya jo hmne create context se bnaya tha and setNewTodos mei nyi values jaengi
   // functionality define karte time hume naam ek dam same rkhna hai tabhi wo fucntionality unme jaegi.
 
   const addTodo = (todo) => {  //isme jo (todo) hai wo hme form se milega
-    setTodos((prev) => [{id: Date.now(), ...todo}, ...prev] )
+    setNewTodos((prev) => [{id: Date.now(), ...todo}, ...prev] )   // isme pehle agar koi previous value thi usko waise hi rakha and then jo value aai usme id ko change kar diya  and baaki same rkha
   }
    
-  const updateTodo = (id, todo) => {
-    setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo)))
+  const updateTodo = (id, todo) => { 
+    setNewTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo)))
   }
 
   const deleteTodo = (id) => {
-    setTodos((prev) => prev.filter ((todo) => todo.id !== id))
+    setNewTodos((prev) => prev.filter ((todo) => todo.id !== id))
   }
 
   const toggleComplete = (id) => {
-    setTodos((prev) => prev.map((prevTodo) => prevTodo.id === id ? {...prevTodo, completed: !prevTodo.completed} : prevTodo))
+    setNewTodos((prev) => prev.map((prevTodo) => prevTodo.id === id ? {...prevTodo, completed: !prevTodo.completed} : prevTodo))
   }
 
 
 
   useEffect(() => {
-    const todos = JSON.parse(localStorage.getItem("todos"))   // we will get value in array rather then string
+    const todos = JSON.parse(localStorage.getItem("newTodos"))   // we will get value in array rather then string
 
     if (todos && todos.length > 0) {
-      setTodos(todos)
+      setNewTodos(todos)
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos))
-  }, [todos])
+    localStorage.setItem("newTodos", JSON.stringify(newTodos))
+  }, [newTodos])
 
 
 
   return (
-    <Todoprovider value={{todos, addTodo, updateTodo, deleteTodo, toggleComplete}}>
+    <Todoprovider value={{newTodos, addTodo, updateTodo, deleteTodo, toggleComplete}}>
 
     <div className="bg-[#172842] min-h-screen py-8">
                 <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
@@ -53,7 +53,7 @@ function App() {
                     </div>
                     <div className="flex flex-wrap gap-y-3">
                       {/* () after arrow function means auto return */}
-                        {todos.map((todo) => (
+                        {newTodos.map((todo) => (
                           <div key={todo.id} 
                           className='w-full'
                           >
@@ -68,3 +68,4 @@ function App() {
 }
 
 export default App
+ 

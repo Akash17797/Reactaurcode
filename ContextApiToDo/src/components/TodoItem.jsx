@@ -19,14 +19,14 @@ function TodoItem({ todo }) {
     return (
         <div
             className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black ${
-                todo.completed ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"
+                todo.completed ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"   // to check that whether the box is checked or not
             }`}
         >
             <input
                 type="checkbox"
                 className="cursor-pointer"
-                checked={todo.completed}
-                onChange={toggleStatus}
+                checked={todo.completed}    // if checked then the todo will be made as todo completed
+                onChange={toggleStatus}   
             />
             <input
                 type="text"
@@ -63,3 +63,4 @@ function TodoItem({ todo }) {
 }
 
 export default TodoItem;
+ 

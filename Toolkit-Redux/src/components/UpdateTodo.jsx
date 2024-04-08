@@ -17,7 +17,7 @@ function UpdateTodos() {
       setUpdatedText('');
       setSelectedTodoId(null);
     }
-  };
+  }; 
 
   return (
     <>
