@@ -1,16 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { removeTodo } from '../feature/Todo/TodoSlice'
+import { removeTodo, updateTodo } from '../feature/Todo/TodoSlice'
 
 // How to access the values from store is explained here:
-
-
-
 
 function Todos() {
 // useSelector mei hume state ki value milti hai callback function mei. yha kyunki ek hi value hai toh sidha hi paas kar rhe hai
 const todos =  useSelector(state => state.todos)
 const dispatch = useDispatch()
+const [newUpdatedText, setNewUpdatedText] = useState('');
+const [editableTodoId, setEditableTodoId] = useState(false);
+
+const whatToUpdate = (id) => {
+  if (newUpdatedText.trim()!== '') {
+    dispatch(updateTodo(
+      {
+        id: id,
+        newText: newUpdatedText
+      }
+    ))
+    setNewUpdatedText('')
+    setEditableTodoId(false)
+  }
+
+}
 
     return (
         <>
@@ -20,8 +33,38 @@ const dispatch = useDispatch()
               <li
                 className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
                 key={todo.id}
-              >
+              > 
+
+                {editableTodoId === todo.id ? (
+                <button
+                  onClick={() => whatToUpdate(todo.id)}
+                  className="text-white bg-green-500 border-0 py-1 px-4 focus:outline-none hover:bg-green-600 rounded text-md mr-2"
+                >
+                  Update
+                </button>
+              ): (
+                <button
+                  onClick={() => {
+                    setEditableTodoId(todo.id);
+                    setNewUpdatedText(todo.text);
+                  }}
+                  className="text-white bg-blue-500 border-0 py-1 px-4 focus:outline-none hover:bg-blue-600 rounded text-md mr-2"
+                >
+                  Edit
+                </button>
+              )}
+
+
+                <div className='text-white'>{editableTodoId === todo.id ? (
+                <input
+                  type="text"
+                  value={newUpdatedText}
+                  onChange={(e) => setNewUpdatedText(e.target.value)}
+                />
+              ) : (
                 <div className='text-white'>{todo.text}</div>
+              )}</div>
+                
                 <button
                  onClick={() => dispatch(removeTodo(todo.id))}
                   className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
@@ -41,6 +84,7 @@ const dispatch = useDispatch()
                     />
                   </svg>
                 </button>
+                
               </li>
             ))}
           </ul>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeTodo, updateTodo } from '../feature/Todo/TodoSlice';
 
-function UpdateTodos() {
+function Todos() {
   const todos = useSelector(state => state.todos);
   const dispatch = useDispatch();
   const [updatedText, setUpdatedText] = useState('');
@@ -17,7 +17,7 @@ function UpdateTodos() {
       setUpdatedText('');
       setSelectedTodoId(null);
     }
-  }; 
+  };
 
   return (
     <>
@@ -70,4 +70,4 @@ function UpdateTodos() {
   );
 }
 
-export default UpdateTodos;
+export default Todos;

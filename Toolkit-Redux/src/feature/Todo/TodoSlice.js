@@ -50,10 +50,10 @@ export const todoSlice = createSlice({
 
         // hum functions bahar bna ke yha pe uska reference bhi de skte hai... reference dena hai call nhi karna
         
-        updateTodo: (state, action) => {
+        updateTodo: (state, action) => { 
             const { id, newText } = action.payload;
             state.todos = state.todos.map(todo =>
-                todo.id === id ? { ...todo, text: newText } : todo
+                todo.id === id ? { ...todo, text: newText } : todo  // Isme jo === id hai wo wo id jise hme update karna hai
             );
         }
     }
