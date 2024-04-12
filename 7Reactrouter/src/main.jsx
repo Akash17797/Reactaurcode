@@ -9,6 +9,7 @@ import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import User from './components/User/User.jsx'
 import Github, { githubInfoLoader } from './components/Github/Github.jsx'
+import Vision from './components/About/Vision.jsx'
 
 // Below are the ways to creater router that is required from RouterProvider
 
@@ -40,7 +41,9 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
       <Route path='' element={<Home/>}/>
-      <Route path='/about' element={<About/>}/>
+      <Route path='/about' element={<About/>}>
+          <Route path='/about/vision' element={<Vision/>}/>
+      </Route>
       <Route path='/contact' element={<Contact/>}/>
       <Route path='user/:userid' element={<User />}/>   
       {/* ye jo user hmne bnaya hai isme hum ye koshish kar rhe ki agar user khud se kuch daale toh user: ke baad page mei khud inject ho jaaye aur user ki details aa skte */}
