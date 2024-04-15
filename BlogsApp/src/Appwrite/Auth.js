@@ -3,7 +3,7 @@
 // Aur agar kabhi hmne appwrie hi as a backend service use karna hua toh hum same file ko hi copy paste kar skte hai.
 
 
-import config from "../config/Config";  //isse hme config.js ka pura object mil jayega jisme saare env variables honge jaise ki appwriteUrl, appwriteProjectId, appwriteDatabaseId, appwriteCollectionId, appwriteBucketId
+import conf from "../conf/Conf";  //isse hme conf.js ka pura object mil jayega jisme saare env variables honge jaise ki appwriteUrl, appwriteProjectId, appwriteDatabaseId, appwriteCollectionId, appwriteBucketId
 import {Client, Account, ID} from 'appwrite'; // ye appwrite sdk ka import hai jo ki humne appwrite sdk ko install karke aaya hai
 
 // This is the main class for the Auth. This class is responsible for all the authentication related tasks. Refer to the appwrite sdk documentation for more information as we have written the similar code but in a different way.
@@ -14,8 +14,8 @@ export class AuthService {
 
     constructor() { // ye constructor hai jo ki class ke object bnate time run hota hai. Isme humne client object ko initialize kiya hai.
         this.client
-            .setEndpoint(config.appwriteUrl) // ye appwriteUrl ko set kar raha hai
-            .setProject(config.appwriteProjectId); // ye appwriteProjectId ko set kar raha hai
+            .setEndpoint(conf.appwriteUrl) // ye appwriteUrl ko set kar raha hai
+            .setProject(conf.appwriteProjectId); // ye appwriteProjectId ko set kar raha hai
 
             this.account = new Account(this.client); // ye account object ko initialize kar raha hai jisme humne client object and uski value pass kiya hai
     }
