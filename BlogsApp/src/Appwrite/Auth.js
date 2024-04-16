@@ -38,7 +38,7 @@ export class AuthService {
             }
         }
         catch (error) {
-            console.error(error);
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
         }
 
 }
@@ -52,7 +52,7 @@ export class AuthService {
             // ab hmne pta hai ki aise login hota hai and upar wala code jo likha hai usme bhi email and password le rhe toh hum directly hi login kar sakte hai. Isilie hum wha bhi same return karenge.
         }
         catch (error) {
-            console.error(error);
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
         }
 }
 
@@ -61,11 +61,11 @@ export class AuthService {
 async getCurrentUser() { 
 
     try {
-        return this.account.get(); // Isme humne get method ka use kiya hai jo ki appwrite sdk me already available hai. And ye tab run karta hai jab user login hai. 
+        return await this.account.get(); // Isme humne get method ka use kiya hai jo ki appwrite sdk me already available hai. And ye tab run karta hai jab user login hai. 
     }
 
     catch (error) {
-        console.error(error); // ye error tab ke liye jab user pahuch hi nhi paaya yha tha... ye error tab nhi dega agar user logged hi nhi hai. uske liye alag method hai
+        console.log("Appwrite serive :: getCurrentUser :: error", error); // ye error tab ke liye jab user pahuch hi nhi paaya yha tha... ye error tab nhi dega agar user logged hi nhi hai. uske liye alag method hai
     }
     return null; // agar user logged in nhi hai toh hum null return karenge
 }
@@ -78,7 +78,7 @@ async logout() {
     }
 
     catch (error) {
-        console.error(error);
+        console.log("Appwrite serive :: getCurrentUser :: error", error);
     }
     return null;
 
@@ -91,5 +91,5 @@ async logout() {
 
 const authService = new AuthService(); // ye ek object hai jisme humne AuthService class ka object bnaya hai. taaki hme kuch bhi use karna toh hum use kar skte hai jaise ki authService.logout, authService.getCurrentUser , etc   // ye object bnane ka kaam humne isliye kiya hai taki hum class ke methods ko direct access kar paye. Agar hum object nhi banate to class ke methods ko access karne ke liye hame object bnana padega. Isse hume direct class ke methods ko access karne me asani hogi. 
 
-export default AuthService; // ye class ko export karne ke liye likha gaya hai
+export default authService; // ye class ko export karne ke liye likha gaya hai
 // agar hum directly hi ise export kar denge bina object bnaye to jab method ko run karenge tab use object bnana padega jisse ki hum class ke methods ko access kar paye. Wo na karne ke liye humne ek object bnaya hai jisme humne saare methods ko daal diya hai. Isse hume object bnane ki jarurat nhi padegi. Isse hume direct class ke methods ko access karne me asani hogi.
