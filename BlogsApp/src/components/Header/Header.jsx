@@ -53,15 +53,16 @@ function Header() {
           </div>
           <ul className='flex ml-auto'>
             {navItems.map((item) =>  //map() takes an array, does something on its elements and returns an array with the transformed elements.
-            item.active ? (
-              <li key={item.name}>
+            item.active ? (  // agar item active hai toh usko show karega warna nhi
+              <li key={item.name}> {/* jo chiz html element mei repeat ho rhi hume key deni hoti use taaki react ke birtual dom ko pta chl ske kis element mei change krna */}
                 <button
-                onClick={() => navigate(item.slug)}
+                onClick={() => navigate(item.slug)} //navigate and link dono hi ek hi kaam krte hai but navigate ko use karne se hume <Link> tag ki jarurat nhi hoti
                 className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
                 >{item.name}</button>
               </li>
             ) : null
             )}
+            {/* {authStatus && () - ye code bahot hi jyada use hone code hai react hai and iska mtlb hai ki agar authStatus true hai toh hi parenthisis () mei jo code likha hai wo run hoga} */}
             {authStatus && (
               <li>
                 <LogoutBtn />
