@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useSelector} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom' // older name of useNavigate was redirect
 
 export default function Protected({children, authentication = true}) {
 
@@ -17,7 +17,7 @@ export default function Protected({children, authentication = true}) {
         //     navigate("/login")
         // }
         
-        //let authValue = authStatus === true ? true : false
+        //let authValue = authStatus === true ? true : false // ye hmne authStatus !== authentication ko replace karne ke liye likha hai
 
         if(authentication && authStatus !== authentication){
             navigate("/login")
