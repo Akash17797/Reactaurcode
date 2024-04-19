@@ -1,5 +1,5 @@
-import conf from "../conf/Conf";
-import {Client, ID, Databses, Storage, Query} from 'appwrite'; 
+import conf from "../conf/Conf.js";
+import {Client, ID, Databases, Storage, Query} from 'appwrite'; 
 
 
 export class Service {
@@ -12,17 +12,17 @@ export class Service {
             .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId);
 
-            this.databases = new Databses(this.client);
+            this.databases = new Databases(this.client);
             this.bucket = new Storage(this.client); // documentation mei bucket ki jagah storage likha hai
     
     }
 
-    async createPost ({title, slug, content, featredImage, status, userId}){    
+    async createPost ({title, slug, content, featuredImage, status, userId}){    
         try {
             return await this.databases.createDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug, {
                 title,
                 content,
-                featredImage,
+                featuredImage,
                 status,
                 userId,
                 
@@ -33,13 +33,13 @@ export class Service {
         }
     }
 
-    async updatePost (slug, {title, content, featredImage, status}){ //hmne slug pass kiya hai kyunki slug se hi post ko identify kiya jata hai and baad mei object pass kiya kyunki hme id pehle check karna padega ki post exist karta hai ya nhi
+    async updatePost (slug, {title, content, featuredImage, status}){ //hmne slug pass kiya hai kyunki slug se hi post ko identify kiya jata hai and baad mei object pass kiya kyunki hme id pehle check karna padega ki post exist karta hai ya nhi
 
         try {
            return await this.databases.updateDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug, { 
                 title,
                 content,
-                featredImage,
+                featuredImage,
                 status,
             });
         }

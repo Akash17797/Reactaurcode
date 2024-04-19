@@ -38,7 +38,7 @@ export class AuthService {
             }
         }
         catch (error) {
-            console.log("Appwrite serive :: getCurrentUser :: error", error);
+            throw error;
         }
 
 }
@@ -47,12 +47,14 @@ export class AuthService {
         // tip: suggestion pe hamesha mat jao, refer documentation always
         try {
 
-            return await this.account.createEmailSession(email, password); // ye ek promise return karega jisme humne email and password pass kiya hai. Isme humne createEmailSession ka use kiya hai jo ki appwrite sdk me already available hai.
+            return await this.account.createEmailPasswordSession(email, password); // ye ek promise return karega jisme humne email and password pass kiya hai. Isme humne createEmailSession ka use kiya hai jo ki appwrite sdk me already available hai.
             
             // ab hmne pta hai ki aise login hota hai and upar wala code jo likha hai usme bhi email and password le rhe toh hum directly hi login kar sakte hai. Isilie hum wha bhi same return karenge.
+
+           
         }
         catch (error) {
-            console.log("Appwrite serive :: getCurrentUser :: error", error);
+            throw error;
         }
 }
 
@@ -74,13 +76,13 @@ async getCurrentUser() {
 
 async logout() { 
     try {
-        return await this.account.deleteSessions(); // appwrite ke methods mei do methods hote hai ek deleteSession aur ek deleteSessions. deleteSession ek session ko delete karta hai jabki deleteSessions saare sessions ko delete karta hai. Isme humne deleteSessions ka use kar rhe hai taaki user har jagah se logout ho jaaye.
+         await this.account.deleteSessions(); // appwrite ke methods mei do methods hote hai ek deleteSession aur ek deleteSessions. deleteSession ek session ko delete karta hai jabki deleteSessions saare sessions ko delete karta hai. Isme humne deleteSessions ka use kar rhe hai taaki user har jagah se logout ho jaaye.
     }
 
     catch (error) {
         console.log("Appwrite serive :: getCurrentUser :: error", error);
     }
-    return null;
+    
 
 }
 
