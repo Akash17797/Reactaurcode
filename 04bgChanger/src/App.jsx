@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="width: 100% h-screen duration-200"
 
-      //className is nothing but class that we used to use in the vanilla CSS. Here in React as class is a already used variable so we cannot use and hence we use className or idName intead of id and class
+      //className is nothing but class that we use to use in the vanilla CSS. Here in React as class is a already used variable so we cannot use and hence we use className or idName intead of id and class
 
       style={{ backgroundColor: color }} // giving two curly braces in syntax and is used in this way only
     > 
